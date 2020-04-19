@@ -10,10 +10,10 @@ cp maps/* /path/to/your-gym-duckietown-repo/gym-duckietown/maps/
 
 ## Evaluation and Submission
 
-When you initialize the duckietown environment, you should add three additional arguments: --map-name, --max-steps and --seed. 
-- --map-name: the name of the map
-- --max-steps: the maximum run step. Please set the value to 2000.
-- --seed: random seed of the environment. 
+When you initialize the duckietown environment, you should add three additional arguments:
+- `--map-name`: the name of the map
+- `--max-steps`: the maximum run step. Please set the value to 2000.
+- `--seed`: random seed of the environment. 
 
 Similar to Assignment 3, you should generate the control files for submission. Each map is associated with 10 random seed, from 1 to 10. You should generate control files for each random seed and map. In particular, there are several [invalid seeds](./invalid_seeds.json) for each map. Please skip them and test the rest.
 
