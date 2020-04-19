@@ -8,7 +8,7 @@ We will evaluate your policy on 5 maps. Please find them [here](./maps/), then c
 cp maps/* /path/to/your-gym-duckietown-repo/gym-duckietown/maps/
 ```
 
-### Evaluation and Submission
+## Evaluation and Submission
 
 When you initialize the duckietown environment, you should add three additional arguments: --map-name, --max-steps and --seed. 
 - --map-name: the name of the map
@@ -27,3 +27,14 @@ Please save your controls following the naming convention: map{map_number}_seed{
 - map2_seed1.txt
 - map5_seed11.txt (this is our sample file. You don't need to consider seed 11)
 
+You also should include a report to briefly explain your method.
+
+Please organize your submission folder following the structure:
+```
+student_id.zip
+|-- report.pdf
+|-- code
+|-- control_files
+    |-- map*_seed*.txt
+    |-- ...
+```
