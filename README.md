@@ -27,7 +27,7 @@ Please save your controls following the naming convention: map{map_number}_seed{
 - map2_seed1.txt
 - map5_seed11.txt (this is our sample file. You don't need to consider seed 11)
 
-You also should include a report to briefly explain your method.
+You also should include an up-to-2-page writeup to briefly explain your method. 
 
 Please organize your submission folder following the structure:
 ```
