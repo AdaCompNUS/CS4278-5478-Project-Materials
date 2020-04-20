@@ -29,7 +29,7 @@ Please save your controls following the naming convention: map{map_number}_seed{
 
 You also should include an up-to-2-page writeup to briefly explain your method. 
 
-Please organize your submission folder following the structure:
+Please organize your submission folder with the following structure:
 ```
 student_id.zip
 |-- report.pdf
