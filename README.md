@@ -22,12 +22,14 @@ A sample file for the environment can be found [here](./example.py). We also inc
 python example.py --map-name map5 --seed 11
 ```
 
+We will compute the accumulated reward for each test case, and grade your project based on the average reward achieved. 
+
 Please save your controls following the naming convention: map{map_number}_seed{seed_number}.txt. For example:
 - map1_seed5.txt
 - map2_seed1.txt
 - map5_seed11.txt (this is our sample file. You don't need to consider seed 11)
 
-You also should include an up-to-2-page writeup to briefly explain your method. 
+You also should include an up-to-2-page report to briefly explain your method. 
 
 Please organize your submission folder with the following structure:
 ```
