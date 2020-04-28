@@ -1,28 +1,26 @@
 # CS4278-5478-Project-Materials
 
-This repository contains the evaluation materials for the CS4278/CS5478 project, autonomous lane following in gym-duckietown.
 
-## Maps
-We will evaluate your policy on 5 maps. Please find them [here](./maps/), then copy them into the map folder of your gym-duckietown environment, e.g.,
+## Evaluation  
+We will evaluate your system on 5 [maps](./maps/). Copy the maps into the map folder of your gym-duckietown environment, e.g.,
 ```
 cp maps/* /path/to/your-gym-duckietown-repo/gym-duckietown/maps/
 ```
+Each map is associated with several [random seeks](./seeds.json). 
 
-## Evaluation  
-
-To initialize the Duckietown environment, there are three  arguments:
+To initialize the gym-duckietown environment, there are three  arguments:
 - `--map-name`: the name of the map
-- `--seed`: random seed of the environment. 
+- `--seed`: random seed of the environment 
 - `--max-steps`: the maximum run step. The default value is 2000.  Do not change this default value when you generate the control files for submission.
 
-Similar to Assignment 3, you  generate the control files for submission. Each map is associated with 6 to 10 random seeds. Please find them [here](./seeds.json). 
+Similar to Assignment 3, you generate the control files for submission. 
 
-A sample file for the environment is available [here](./example.py). We also include a [sample control file](./map5_seed11.txt). It illustrate how to add arguments, output your controls into a file. To try our simple policy, 
+A sample file for the environment is available [here](./example.py). We also include a [sample control file](./map5_seed11.txt). It illustrates how to add arguments and output your controls to a file. To try our simple policy, 
 ```
 python example.py --map-name map5 --seed 11
 ```
 
-We will compute the accumulated reward for each test case, and grade your project based on the average reward achieved. 
+We will evaluate your system on these 5 maps and compute the accumulated reward for each test case. A primary component of your grade is the average reward achieved. 
 
 ## Submission
 The submission consists of two parts. 
