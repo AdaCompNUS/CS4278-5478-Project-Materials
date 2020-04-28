@@ -6,7 +6,7 @@ We will evaluate your system on 5 [maps](./maps/). Copy the maps into the map fo
 ```
 cp maps/* /path/to/your-gym-duckietown-repo/gym-duckietown/maps/
 ```
-Each map is associated with several [random seeks](./seeds.json). 
+Each map is associated with several [random seeds](./seeds.json). 
 
 To initialize the gym-duckietown environment, there are three  arguments:
 - `--map-name`: the name of the map
