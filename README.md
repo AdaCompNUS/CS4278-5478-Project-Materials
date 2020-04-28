@@ -10,14 +10,14 @@ cp maps/* /path/to/your-gym-duckietown-repo/gym-duckietown/maps/
 
 ## Evaluation  
 
-When you initialize the duckietown environment, you should add three additional arguments:
+To initialize the Duckietown environment, there are three  arguments:
 - `--map-name`: the name of the map
-- `--max-steps`: the maximum run step. The default value is 2000. Please do not change this.
 - `--seed`: random seed of the environment. 
+- `--max-steps`: the maximum run step. The default value is 2000.  Do not change this default value when you generate the control files for submission.
 
-Similar to Assignment 3, you should generate the control files for submission. Each map is associated with 10 random seed. Please test your policy with random seed **from 1 to 10**. You should generate control files for each random seed and map. In particular, there are several [invalid seeds](./invalid_seeds.json) for each map. Please skip them and test the rest.
+Similar to Assignment 3, you  generate the control files for submission. Each map is associated with 10 random seed. Please test your policy with random seed **from 1 to 10**. You should generate control files for each random seed and map. In particular, there are several [invalid seeds](./invalid_seeds.json) for each map. Please skip them and test the rest.
 
-A sample file for the environment can be found [here](./example.py). We also include a [sample control file]('./../map5_seed11.txt). We illustrate how to add arguments, dump your controls into a file in the example. To try our simple policy, please do:
+A sample file for the environment is available [here](./example.py). We also include a [sample control file]('./../map5_seed11.txt). It illustrate how to add arguments, output your controls into a file. To try our simple policy, 
 ```
 python example.py --map-name map5 --seed 11
 ```
@@ -25,14 +25,18 @@ python example.py --map-name map5 --seed 11
 We will compute the accumulated reward for each test case, and grade your project based on the average reward achieved. 
 
 ## Submission
-Save your controls following the naming convention: map{map_number}_seed{seed_number}.txt. For example:
-- map1_seed5.txt
-- map2_seed1.txt
-- map5_seed11.txt (this is our sample file. You don't need to consider seed 11)
+The submission consists of two parts. 
 
-You also should include an up-to-2-page report to briefly explain your method. 
+1. For each map and each random seed, save your controls to a file named  "map{map_number}_seed{seed_number}.txt". For example, 
+  - map1_seed5.txt
+  - map2_seed1.txt
+1. Provide a short report (up to 2 pages, Times Roman 10 point) to  describe your apporach. In particular, if you follow the classic modular system design approach, provide a system diagram and describe
+  - how the system processes the visual input,
+  - how it determines the position with respect to the lane,
+  - how it controls the vehicle. 
+If you adopt a end-to-end neural network learning approach, provide the network architecture diagram. Explain your architecture choices and modules, if any.
 
-Please organize your submission folder with the following structure:
+Organize your submission folder according to the following structure:
 ```
 student_id.zip
 |-- report.pdf
