@@ -15,7 +15,7 @@ To initialize the gym-duckietown environment, there are three  arguments:
 
 Similar to Assignment 3, you generate the control files for submission. 
 
-A sample file for the environment is available [here](./example.py). We also include a [sample control file](./map5_seed11.txt). It illustrates how to add arguments and output your controls to a file. To try our simple policy, 
+A sample file for the python environment is available [here](./example.py). We also include a [sample control file](./map5_seed11.txt). It illustrates how to add arguments and output your controls to a file. To try our simple policy, 
 ```
 python example.py --map-name map5 --seed 11
 ```
