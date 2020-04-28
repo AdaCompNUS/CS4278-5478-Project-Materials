@@ -8,7 +8,7 @@ We will evaluate your policy on 5 maps. Please find them [here](./maps/), then c
 cp maps/* /path/to/your-gym-duckietown-repo/gym-duckietown/maps/
 ```
 
-## Evaluation and Submission
+## Evaluation  
 
 When you initialize the duckietown environment, you should add three additional arguments:
 - `--map-name`: the name of the map
@@ -24,7 +24,8 @@ python example.py --map-name map5 --seed 11
 
 We will compute the accumulated reward for each test case, and grade your project based on the average reward achieved. 
 
-Please save your controls following the naming convention: map{map_number}_seed{seed_number}.txt. For example:
+## Submission
+Save your controls following the naming convention: map{map_number}_seed{seed_number}.txt. For example:
 - map1_seed5.txt
 - map2_seed1.txt
 - map5_seed11.txt (this is our sample file. You don't need to consider seed 11)
