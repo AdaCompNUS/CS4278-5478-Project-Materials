@@ -15,7 +15,7 @@ When you initialize the duckietown environment, you should add three additional 
 - `--max-steps`: the maximum run step. The default value is 2000. Please do not change this.
 - `--seed`: random seed of the environment. 
 
-Similar to Assignment 3, you should generate the control files for submission. Each map is associated with 10 random seed, from 1 to 10. You should generate control files for each random seed and map. In particular, there are several [invalid seeds](./invalid_seeds.json) for each map. Please skip them and test the rest.
+Similar to Assignment 3, you should generate the control files for submission. Each map is associated with 10 random seed. Please test your policy with random seed **from 1 to 10**. You should generate control files for each random seed and map. In particular, there are several [invalid seeds](./invalid_seeds.json) for each map. Please skip them and test the rest.
 
 A sample file for the environment can be found [here](./example.py). We also include a [sample control file]('./../map5_seed11.txt). We illustrate how to add arguments, dump your controls into a file in the example. To try our simple policy, please do:
 ```
