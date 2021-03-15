@@ -1,0 +1,9 @@
+**
+!src/**
+!experiments/**
+!docker/**
+!**/*py
+!**/*yaml
+!Makefile
+!LICENSE.pdf
+!requirements*
