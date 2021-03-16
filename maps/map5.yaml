@@ -11,4 +11,11 @@ tiles:
 - [asphalt, curve_left/S, straight/E    ,   straight/E, straight/E, straight/E, straight/E, straight/E, curve_right/S, asphalt]
 - [asphalt, asphalt     , asphalt       , asphalt       , asphalt       , asphalt   , asphalt       , asphalt, asphalt, asphalt]
 
+
+objects:
+- kind: sign_stop
+  pos: [5.08, 5.05]
+  rotate: 180
+  height: 0.18
+
 tile_size: 0.585
