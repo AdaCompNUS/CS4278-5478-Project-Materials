@@ -22,7 +22,11 @@ python example.py --map-name map5 --seed 11
 
 We will evaluate your system on these 5 maps and compute the accumulated reward for each test case. A primary component of your grade is the average reward achieved. 
 
-<!--## Submission
+### Stop Sign:
+The agent must slow down below 0.15m/s if it is within 0.3m of a stop sign. The Duckiebot must recognize the sign from camera images.
+
+
+## Submission
 The submission consists of two parts. 
 
 - For each map and each random seed, save your controls to a file named  "map{map_number}_seed{seed_number}.txt". For example, 
@@ -44,4 +48,4 @@ student_id.zip
     |-- map*_seed*.txt
     |-- ...
 ```
--->
+
