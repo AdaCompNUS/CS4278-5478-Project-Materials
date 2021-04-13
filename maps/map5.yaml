@@ -18,4 +18,14 @@ objects:
   rotate: 180
   height: 0.18
 
+- kind: sign_stop
+  pos: [0.94, 3.96]
+  rotate: 90
+  height: 0.18
+
+- kind: sign_stop
+  pos: [3.08, 3.96]
+  rotate: 0
+  height: 0.18
+
 tile_size: 0.585

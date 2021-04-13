@@ -75,4 +75,20 @@ objects:
   height: 0.18
   optional: true
 
+
+- kind: sign_stop
+  pos: [5.08, 5.05]
+  rotate: 180
+  height: 0.18
+
+- kind: sign_stop
+  pos: [2.08, 4.05]
+  rotate: -90
+  height: 0.18
+
+- kind: sign_stop
+  pos: [0.94, 3.96]
+  rotate: 90
+  height: 0.18
+
 tile_size: 0.585
