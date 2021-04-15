@@ -43,8 +43,8 @@ Please check example.py for the format of the control file and make sure the sub
 If you adopt a end-to-end neural network learning approach, provide the network architecture diagram. Explain your architecture choices, algorithms and modules, if any.
 
 Note:
-1. Shaking without moving forward is not allowed and penealty will be given
-2. Evaluation for each map will take maximally 1500 steps
+1. Shaking without moving forward is not allowed and penealty will be given.
+2. Evaluation for each map and each episode will take maximally 1500 steps.
 3. Please git pull this project repository and use the correct maps (with stopsigns) to generate your control files.
 
 Organize your submission folder according to the following structure:
