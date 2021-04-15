@@ -6,7 +6,7 @@ from gym_duckietown.envs import DuckietownEnv
 parser = argparse.ArgumentParser()
 
 # Do not change this
-parser.add_argument('--max_steps', type=int, default=2000, help='max_steps')
+parser.add_argument('--max_steps', type=int, default=1500, help='max_steps')
 
 # You should set them to different map name and seed accordingly
 parser.add_argument('--map-name', default='map5')

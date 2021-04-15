@@ -32,12 +32,19 @@ The submission consists of two parts.
 - For each map and each random seed, save your controls to a file named  "map{map_number}_seed{seed_number}.txt". For example, 
   - map1_seed5.txt
   - map2_seed1.txt
+
+Please check example.py for the format of the control file and make sure the submitted file is in correct format. You could use example.py to verify the correctness of your control file and get the score for it.
+
 - Provide a short report (up to 2 pages, Times Roman 10 point) to  describe your apporach. In particular, if you follow the classic modular system design approach, provide a system diagram and describe
   - how the system processes the visual input,
   - how it determines the position with respect to the lane,
   - how it controls the vehicle. 
 
 If you adopt a end-to-end neural network learning approach, provide the network architecture diagram. Explain your architecture choices, algorithms and modules, if any.
+
+Note:
+1. Shaking without moving forward is not allowed and penealty will be given
+2. Evaluation for each map will take maximally 1500 steps
 
 Organize your submission folder according to the following structure:
 ```
