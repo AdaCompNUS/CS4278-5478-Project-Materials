@@ -45,6 +45,7 @@ If you adopt a end-to-end neural network learning approach, provide the network 
 Note:
 1. Shaking without moving forward is not allowed and penealty will be given
 2. Evaluation for each map will take maximally 1500 steps
+3. Please git pull this project repository and use the correct maps (with stopsigns) to generate your control files.
 
 Organize your submission folder according to the following structure:
 ```
