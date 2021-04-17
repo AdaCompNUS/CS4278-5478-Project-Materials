@@ -2,14 +2,13 @@
 
 
 ## Evaluation  
-### Environment Maps
-We will evaluate your system on 5 [maps](./maps/). Copy the maps into the map folder of your gym-duckietown environment, e.g.,
+We will evaluate your system on 5 [maps](./maps/) to compute the average accumulated reward. A primary component of your grade is the  reward achieved.
+
+Make sure to pull the latest maps into the map folder of your gym-duckietown environment:
 ```
 cp maps/* /path/to/your-gym-duckietown-repo/gym-duckietown/maps/
 ```
-Each map is associated with several [random seeds](./seeds.json). 
-
-To initialize the gym-duckietown environment, there are three  arguments:
+Each map is associated with several [random seeds](./seeds.json).  To initialize the gym-duckietown environment, there are three  arguments:
 - `--map-name`: the name of the map
 - `--seed`: random seed of the environment 
 - `--max-steps`: the maximum run step. The default value is 1500.  Do not change this default value when you generate the control files for submission.
@@ -21,15 +20,11 @@ A sample file for the python environment is available [here](./example.py). We a
 python example.py --map-name map5 --seed 11
 ```
 
-Your system will be on these 5 maps to compute the average accumulated reward. A primary component of your grade is the  reward achieved. 
-
-### Stop Sign
-The Duckiebot must recognize the sign from camera images. It must slow down below 0.15m/s if it is within 0.3m of a stop sign. 
-
-Note:
+1. The Duckiebot must recognize the sign from camera images. It must slow down below 0.15m/s if it is within 0.3m of a stop sign. 
 1. Oscillating in place may generate a high score in the simulator, but will be penalized in our evaluation. This is a flaw in the Duckietown simulator. See the Forum post under *High cumulative reward but "ridiculous" policy*. 
-2. Evaluation for each map and each episode will take maximally 1500 steps.
-3. Git pull this project repository and use the correct maps (with stop signs) to generate your control files.
+
+
+
 
 ## Submission
 The submission consists of two parts. 
