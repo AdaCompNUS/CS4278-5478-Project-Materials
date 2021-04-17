@@ -26,6 +26,10 @@ Your system will be on these 5 maps to compute the average accumulated reward. A
 ### Stop Sign
 The Duckiebot must recognize the sign from camera images. It must slow down below 0.15m/s if it is within 0.3m of a stop sign. 
 
+Note:
+1. Oscillating in place may generate a high score in the simulator, but will be penalized in our evaluation. This is a flaw in the Duckietown simulator. See the Forum post under *High cumulative reward but "ridiculous" policy*. 
+2. Evaluation for each map and each episode will take maximally 1500 steps.
+3. Git pull this project repository and use the correct maps (with stop signs) to generate your control files.
 
 ## Submission
 The submission consists of two parts. 
@@ -34,7 +38,7 @@ The submission consists of two parts.
   - map1_seed5.txt
   - map2_seed1.txt
 
-Check `example.py` for the format of the control file and make sure the submitted file is in correct format. 
+  Check `example.py` for the format of the control file and make sure the submitted file is in correct format. 
 
 - Provide a short report (up to 2 pages, Times Roman 10 point) to  describe your apporach. In particular, if you follow the classic modular system design approach, provide a system diagram and describe
   - how the system processes the visual input,
@@ -43,12 +47,7 @@ Check `example.py` for the format of the control file and make sure the submitte
 
   If you adopt a end-to-end neural network learning approach, provide the network architecture diagram. Explain your architecture choices, algorithms and modules, if any.
 
-Note:
-1. Oscillating in place may generate a high score in the simulator, but will be penalized in our evaluation. This is a flaw in the Duckietown simulator. See the Forum post under *High cumulative reward but "ridiculous" policy*. 
-2. Evaluation for each map and each episode will take maximally 1500 steps.
-3. Git pull this project repository and use the correct maps (with stop signs) to generate your control files.
-
-Organize your submission folder **strictly** according to the following structure:
+- Organize your submission folder **strictly** according to the following structure:
 ```
 student_id.zip
 |-- report.pdf
