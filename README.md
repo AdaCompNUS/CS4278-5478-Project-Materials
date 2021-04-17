@@ -12,7 +12,7 @@ Each map is associated with several [random seeds](./seeds.json).
 To initialize the gym-duckietown environment, there are three  arguments:
 - `--map-name`: the name of the map
 - `--seed`: random seed of the environment 
-- `--max-steps`: the maximum run step. The default value is 2000.  Do not change this default value when you generate the control files for submission.
+- `--max-steps`: the maximum run step. The default value is 1500.  Do not change this default value when you generate the control files for submission.
 
 Similar to Assignment 3,  generate the control files for submission. 
 
