@@ -30,7 +30,7 @@ The Duckiebot must recognize the sign from camera images. It must slow down belo
 ## Submission
 The submission consists of two parts. 
 
-- For each map and each random seed, save your controls to a file named  "map{map_number}_seed{seed_number}.txt". For example, 
+- For each map and each random seed ([random seeds](./seeds.json)), save your controls to a file named  "map{map_number}_seed{seed_number}.txt". For example, 
   - map1_seed5.txt
   - map2_seed1.txt
 
