@@ -2,7 +2,10 @@
 
 
 ## Evaluation  
-We will evaluate your system on 5 [maps](./maps/) to compute the average accumulated reward. A primary component of your grade is the  reward achieved.
+We will evaluate your system on 5 [maps](./maps/) to compute the average accumulated reward. A primary component of your grade is the  reward achieved. In particular, take note of the two issues below:
+
+1. The Duckiebot must recognize the sign from camera images. It must slow down below 0.15m/s if it is within 0.3m of a stop sign. 
+1. Oscillating in place may generate a high score in the simulator, but will be penalized in our evaluation. This is a flaw in the Duckietown simulator. See the Forum post under *High cumulative reward but "ridiculous" policy*. 
 
 Make sure to pull the latest maps into the map folder of your gym-duckietown environment:
 ```
@@ -19,11 +22,6 @@ A sample file for the python environment is available [here](./example.py). We a
 ```
 python example.py --map-name map5 --seed 11
 ```
-
-1. The Duckiebot must recognize the sign from camera images. It must slow down below 0.15m/s if it is within 0.3m of a stop sign. 
-1. Oscillating in place may generate a high score in the simulator, but will be penalized in our evaluation. This is a flaw in the Duckietown simulator. See the Forum post under *High cumulative reward but "ridiculous" policy*. 
-
-
 
 
 ## Submission
