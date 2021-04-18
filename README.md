@@ -16,9 +16,7 @@ Each map is associated with several [random seeds](./seeds.json).  To initialize
 - `--seed`: random seed of the environment 
 - `--max-steps`: the maximum run step. The default value is 1500.  Do not change this default value when you generate the control files for submission.
 
-Similar to Assignment 3,  generate the control files for submission. 
-
-A sample file for the python environment is available [here](./example.py). We also include a [sample control file](./map5_seed11.txt). It illustrates how to add arguments and output your controls to a file. To try our simple policy, 
+Generate the control files for submission, similar to what you have done in Assignment 2. A sample file for the python environment is available [here](./example.py) together with [sample control file](./map5_seed11.txt). They illustrate how to add arguments and output your controls to a file. To try our simple policy, 
 ```
 python example.py --map-name map5 --seed 11
 ```
