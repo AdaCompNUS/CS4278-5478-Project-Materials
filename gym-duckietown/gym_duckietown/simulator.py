@@ -3,9 +3,13 @@ from __future__ import division
 
 from collections import namedtuple
 from ctypes import POINTER
+
+import numpy as np
 from dataclasses import dataclass
 from typing import Tuple
 import geometry
+import cv2
+
 
 @dataclass
 class DoneRewardInfo:
@@ -66,7 +70,7 @@ WHEEL_DIST = 0.102
 # Total robot width at wheel base, used for collision detection
 # Note: the actual robot width is 13cm, but we add a litte bit of buffer
 #       to faciliate sim-to-real transfer.
-ROBOT_WIDTH = 0.13  + 0.02
+ROBOT_WIDTH = 0.13 + 0.02
 
 # Total robot length
 # Note: the center of rotation (between the wheels) is not at the
@@ -220,10 +224,10 @@ class Simulator(gym.Env):
 
         # Two-tuple of wheel torques, each in the range [-1, 1]
         self.action_space = spaces.Box(
-                low=-1,
-                high=1,
-                shape=(2,),
-                dtype=np.float32
+            low=-1,
+            high=1,
+            shape=(2,),
+            dtype=np.float32
         )
 
         self.camera_width = camera_width
@@ -234,10 +238,10 @@ class Simulator(gym.Env):
         # Note: the pixels are in uint8 format because this is more compact
         # than float32 if sent over the network or stored in a dataset
         self.observation_space = spaces.Box(
-                low=0,
-                high=255,
-                shape=(self.camera_height, self.camera_width, 3),
-                dtype=np.uint8
+            low=0,
+            high=255,
+            shape=(self.camera_height, self.camera_width, 3),
+            dtype=np.uint8
         )
 
         self.reward_range = (-1000, 1000)
@@ -251,17 +255,17 @@ class Simulator(gym.Env):
 
         # For displaying text
         self.text_label = pyglet.text.Label(
-                font_name="Arial",
-                font_size=14,
-                x=5,
-                y=WINDOW_HEIGHT - 19
+            font_name="Arial",
+            font_size=14,
+            x=5,
+            y=WINDOW_HEIGHT - 19
         )
 
         # Create a frame buffer object for the observation
         self.multi_fbo, self.final_fbo = create_frame_buffers(
-                self.camera_width,
-                self.camera_height,
-                4
+            self.camera_width,
+            self.camera_height,
+            4
         )
 
         # Array to render the image into (for observation rendering)
@@ -269,15 +273,13 @@ class Simulator(gym.Env):
 
         # Create a frame buffer object for human rendering
         self.multi_fbo_human, self.final_fbo_human = create_frame_buffers(
-                WINDOW_WIDTH,
-                WINDOW_HEIGHT,
-                4
+            WINDOW_WIDTH,
+            WINDOW_HEIGHT,
+            4
         )
 
         # Array to render the image into (for human rendering)
         self.img_array_human = np.zeros(shape=(WINDOW_HEIGHT, WINDOW_WIDTH, 3), dtype=np.uint8)
-
-        
 
         # allowed angle in lane for starting position
         self.accept_start_angle_deg = accept_start_angle_deg
@@ -310,7 +312,7 @@ class Simulator(gym.Env):
 
         self.last_action = np.array([0, 0])
         self.wheelVels = np.array([0, 0])
-        
+
     def _init_vlists(self):
         import pyglet
         # Create the vertex list for our road quad
@@ -352,7 +354,6 @@ class Simulator(gym.Env):
 
         # Robot's current speed
         self.speed = 0
-
 
         if self.randomize_maps_on_reset:
             map_name = np.random.choice(self.map_names)
@@ -465,7 +466,6 @@ class Simulator(gym.Env):
 
         # Keep trying to find a valid spawn position on this tile
 
-
         for _ in range(MAX_SPAWN_ATTEMPTS):
             i, j = tile['coords']
 
@@ -538,6 +538,78 @@ class Simulator(gym.Env):
             self.map_data = yaml.load(f, Loader=yaml.Loader)
 
         self._interpret_map(self.map_data)
+        # self.get_occupancy_grid(self.map_data)
+
+    def get_occupancy_grid(self, map_data: dict):
+        if not 'tile_size' in map_data:
+            msg = 'Must now include explicit tile_size in the map data.'
+            raise ValueError(msg)
+        road_tile_size = map_data['tile_size']
+        # self._init_vlists()
+
+        tiles = map_data['tiles']
+        assert len(tiles) > 0
+        assert len(tiles[0]) > 0
+
+        # Create the grid
+        grid_height = len(tiles)
+        grid_width = len(tiles[0])
+        grid = [None] * grid_width * grid_height
+        no_pixels_grid_side = 100
+
+        img_width = grid_width * no_pixels_grid_side
+        img_height = grid_height * no_pixels_grid_side
+        img = np.zeros((img_height, img_width, 3))
+
+        # For each row in the grid
+        for j, row in enumerate(tiles):
+            msg = "each row of tiles must have the same length"
+            if len(row) != self.grid_width:
+                raise Exception(msg)
+
+            # For each tile in this row
+            for i, tile in enumerate(row):
+                tile = tile.strip()
+
+                if tile == 'empty':
+                    continue
+
+                if '/' in tile:
+                    drivable = True
+                elif '4' in tile:
+                    drivable = True
+                else:
+                    drivable = False
+
+                if drivable:
+                    img[j * no_pixels_grid_side:(j + 1) * no_pixels_grid_side,
+                    i * no_pixels_grid_side:(i + 1) * no_pixels_grid_side] = 1
+                    curves = self._get_curve(i, j)
+
+                    color = np.array([[1, 0, 0], [0, 0, 1], [0, 1, 0], [1, 0, 0], [0, 0, 1], [0, 1, 0]])
+
+                    for line_dx, line in enumerate(curves):
+                        pre_p = None
+                        for p_idx, point in enumerate(line):
+                            x_cor = int(point[0] / road_tile_size * no_pixels_grid_side)
+                            y_cor = int(point[2] / road_tile_size * no_pixels_grid_side)
+                            img[y_cor:y_cor + 3, x_cor:x_cor + 3] = color[line_dx]
+                            point = np.array([x_cor, y_cor]).astype(np.float32)
+
+                            if pre_p is not None:
+                                # connect the two points
+                                num_nodes = 20
+                                dir = (point - pre_p) / num_nodes
+
+                                for k in range(num_nodes):
+                                    p_ = pre_p + dir * k
+                                    p_ = p_.round().astype(np.int)
+                                    img[p_[1]:p_[1] + 3, p_[0]:p_[0] + 3] = color[line_dx]
+
+                            pre_p = point.copy()
+
+        cv2.imshow("img", img)
+        cv2.waitKey(0)
 
     def _interpret_map(self, map_data: dict):
         if not 'tile_size' in map_data:
@@ -786,8 +858,8 @@ class Simulator(gym.Env):
         # Find the corners for each candidate tile
         drivable_tiles = np.array([
             tile_corners(
-                    self._get_tile(pt[0], pt[1])['coords'],
-                    self.road_tile_size
+                self._get_tile(pt[0], pt[1])['coords'],
+                self.road_tile_size
             ).T for pt in drivable_tiles
         ])
 
@@ -1150,10 +1222,10 @@ class Simulator(gym.Env):
 
         # Check collisions with static objects
         collision = intersects(
-                agent_corners,
-                self.collidable_corners,
-                agent_norm,
-                self.collidable_norms
+            agent_corners,
+            self.collidable_corners,
+            agent_norm,
+            self.collidable_norms
         )
 
         if collision:
@@ -1190,7 +1262,6 @@ class Simulator(gym.Env):
                         self._drivable_pos(l_pos) and
                         self._drivable_pos(r_pos) and
                         self._drivable_pos(f_pos))
-
 
         # Recompute the bounding boxes (BB) for the agent
         agent_corners = get_agent_corners(pos, angle)
@@ -1294,7 +1365,6 @@ class Simulator(gym.Env):
         # cp = [gx, (grid_height - 1) * tile_size - gz]
         cp = [gx, grid_height * tile_size - gz]
 
-
         return geometry.SE2_from_translation_angle(cp, angle)
 
     def weird_from_cartesian(self, q: np.ndarray) -> Tuple[list, float]:
@@ -1330,7 +1400,7 @@ class Simulator(gym.Env):
             )
 
         dist_to_stop = 1000.0
-        #print("number of objects = ", len(self.objects))
+        # print("number of objects = ", len(self.objects))
         for obj in self.objects:
             if obj.kind == "sign_stop":
                 dist_to_stop = min(dist_to_stop, ((pos[0] - obj.pos[0]) ** 2 + (pos[2] - obj.pos[2]) ** 2) ** 0.5)
@@ -1343,11 +1413,11 @@ class Simulator(gym.Env):
         action = np.clip(action, -1, 1)
         # Actions could be a Python list
         action = np.array(action)
-        
+
         frame_skip = self.frame_skip
         if self.domain_rand:
             frame_skip = self.randomization_settings["frame_skip"]
-        
+
         for _ in range(int(frame_skip)):
             self.update_physics(action)
 
@@ -1413,10 +1483,10 @@ class Simulator(gym.Env):
         gl.glMatrixMode(gl.GL_PROJECTION)
         gl.glLoadIdentity()
         gl.gluPerspective(
-                self.cam_fov_y,
-                width / float(height),
-                0.04,
-                100.0
+            self.cam_fov_y,
+            width / float(height),
+            0.04,
+            100.0
         )
 
         # Set modelview matrix
@@ -1426,7 +1496,7 @@ class Simulator(gym.Env):
         logger.info('Pos: %s angle %s' % (self.cur_pos, self.cur_angle))
         if self.domain_rand:
             pos = pos + self.randomization_settings['camera_noise']
-            
+
         x, y, z = pos + self.cam_offset
         dx, dy, dz = get_dir_vec(angle)
         gl.glMatrixMode(gl.GL_MODELVIEW)
@@ -1444,29 +1514,29 @@ class Simulator(gym.Env):
 
         if top_down:
             gl.gluLookAt(
-                    # Eye position
-                    (self.grid_width * self.road_tile_size) / 2,
-                    5,
-                    (self.grid_height * self.road_tile_size) / 2,
-                    # Target
-                    (self.grid_width * self.road_tile_size) / 2,
-                    0,
-                    (self.grid_height * self.road_tile_size) / 2,
-                    # Up vector
-                    0, 0, -1.0
+                # Eye position
+                (self.grid_width * self.road_tile_size) / 2,
+                5,
+                (self.grid_height * self.road_tile_size) / 2,
+                # Target
+                (self.grid_width * self.road_tile_size) / 2,
+                0,
+                (self.grid_height * self.road_tile_size) / 2,
+                # Up vector
+                0, 0, -1.0
             )
         else:
             gl.gluLookAt(
-                    # Eye position
-                    x,
-                    y,
-                    z,
-                    # Target
-                    x + dx,
-                    y + dy,
-                    z + dz,
-                    # Up vector
-                    0, 1.0, 0.0
+                # Eye position
+                x,
+                y,
+                z,
+                # Target
+                x + dx,
+                y + dy,
+                z + dz,
+                # Up vector
+                0, 1.0, 0.0
             )
 
         # Draw the ground quad
@@ -1558,25 +1628,25 @@ class Simulator(gym.Env):
         gl.glBindFramebuffer(gl.GL_READ_FRAMEBUFFER, multi_fbo)
         gl.glBindFramebuffer(gl.GL_DRAW_FRAMEBUFFER, final_fbo)
         gl.glBlitFramebuffer(
-                0, 0,
-                width, height,
-                0, 0,
-                width, height,
-                gl.GL_COLOR_BUFFER_BIT,
-                gl.GL_LINEAR
+            0, 0,
+            width, height,
+            0, 0,
+            width, height,
+            gl.GL_COLOR_BUFFER_BIT,
+            gl.GL_LINEAR
         )
 
         # Copy the frame buffer contents into a numpy array
         # Note: glReadPixels reads starting from the lower left corner
         gl.glBindFramebuffer(gl.GL_FRAMEBUFFER, final_fbo)
         gl.glReadPixels(
-                0,
-                0,
-                width,
-                height,
-                gl.GL_RGB,
-                gl.GL_UNSIGNED_BYTE,
-                img_array.ctypes.data_as(POINTER(gl.GLubyte))
+            0,
+            0,
+            width,
+            height,
+            gl.GL_RGB,
+            gl.GL_UNSIGNED_BYTE,
+            img_array.ctypes.data_as(POINTER(gl.GLubyte))
         )
 
         # Unbind the frame buffer
@@ -1595,12 +1665,12 @@ class Simulator(gym.Env):
         """
 
         observation = self._render_img(
-                self.camera_width,
-                self.camera_height,
-                self.multi_fbo,
-                self.final_fbo,
-                self.img_array,
-                top_down=False
+            self.camera_width,
+            self.camera_height,
+            self.multi_fbo,
+            self.final_fbo,
+            self.img_array,
+            top_down=False
         )
 
         # self.undistort - for UndistortWrapper
@@ -1622,12 +1692,12 @@ class Simulator(gym.Env):
         top_down = mode == 'top_down'
         # Render the image
         img = self._render_img(
-                WINDOW_WIDTH,
-                WINDOW_HEIGHT,
-                self.multi_fbo_human,
-                self.final_fbo_human,
-                self.img_array_human,
-                top_down=top_down
+            WINDOW_WIDTH,
+            WINDOW_HEIGHT,
+            self.multi_fbo_human,
+            self.final_fbo_human,
+            self.img_array_human,
+            top_down=top_down
         )
 
         # self.undistort - for UndistortWrapper
@@ -1642,10 +1712,10 @@ class Simulator(gym.Env):
         if self.window is None:
             config = gl.Config(double_buffer=False)
             self.window = window.Window(
-                    width=WINDOW_WIDTH,
-                    height=WINDOW_HEIGHT,
-                    resizable=False,
-                    config=config
+                width=WINDOW_WIDTH,
+                height=WINDOW_HEIGHT,
+                resizable=False,
+                config=config
             )
 
         self.window.clear()
@@ -1667,18 +1737,18 @@ class Simulator(gym.Env):
         height = img.shape[0]
         img = np.ascontiguousarray(np.flip(img, axis=0))
         img_data = image.ImageData(
-                width,
-                height,
-                'RGB',
-                img.ctypes.data_as(POINTER(gl.GLubyte)),
-                pitch=width * 3,
+            width,
+            height,
+            'RGB',
+            img.ctypes.data_as(POINTER(gl.GLubyte)),
+            pitch=width * 3,
         )
         img_data.blit(
-                0,
-                0,
-                0,
-                width=WINDOW_WIDTH,
-                height=WINDOW_HEIGHT
+            0,
+            0,
+            0,
+            width=WINDOW_WIDTH,
+            height=WINDOW_HEIGHT
         )
 
         # Display position/state information
@@ -1765,10 +1835,10 @@ def _actual_center(pos, angle):
 
 def get_agent_corners(pos, angle):
     agent_corners = agent_boundbox(
-            _actual_center(pos, angle),
-            ROBOT_WIDTH,
-            ROBOT_LENGTH,
-            get_dir_vec(angle),
-            get_right_vec(angle)
+        _actual_center(pos, angle),
+        ROBOT_WIDTH,
+        ROBOT_LENGTH,
+        get_dir_vec(angle),
+        get_right_vec(angle)
     )
     return agent_corners
