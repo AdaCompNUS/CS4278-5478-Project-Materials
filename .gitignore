@@ -2,3 +2,6 @@
 *~
 
 .idea/
+
+gym-duckietown/test_dev/
+path_*.yaml

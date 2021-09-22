@@ -1,0 +1,769 @@
+tiles:
+- [asphalt,       asphalt,       asphalt,       asphalt,       asphalt,       asphalt,       asphalt,       asphalt,       asphalt,       asphalt,       asphalt,       asphalt,       asphalt,       asphalt,       asphalt,       asphalt,       asphalt]
+- [asphalt,       asphalt,       asphalt,       asphalt,       asphalt,       asphalt,       asphalt,       asphalt,       asphalt,       asphalt,       curve_right/N, straight/W,    straight/W,    3way_left/W,  straight/W,    curve_left/N,  asphalt]
+- [asphalt,       asphalt,       asphalt,       asphalt,       asphalt,       asphalt,       asphalt,       asphalt,       curve_right/N, straight/W,    curve_left/E,  grass,         grass,         straight/N,    grass,         straight/N,    asphalt]
+- [asphalt,       curve_right/N, straight/W,    curve_left/N,  asphalt,       asphalt,       asphalt,       asphalt,       straight/N,    grass,         grass,         grass,         grass,         straight/N,    grass,         straight/N,    asphalt]
+- [asphalt,       straight/N,    asphalt,       straight/N,    asphalt,       asphalt,       asphalt,       asphalt,       curve_right/W, straight/W,    straight/W,    3way_left/W,  straight/W,    3way_left/N,   grass,         straight/N,    asphalt]
+- [asphalt,       3way_left/S,  straight/W,    3way_left/E,  straight/W,    3way_left/W,  straight/W,    curve_left/N,  grass,         grass,         grass,         straight/N,    asphalt,       straight/N,    grass,         straight/N,    asphalt]
+- [asphalt,       straight/N,    asphalt,       asphalt,       asphalt,       straight/N,    asphalt,       curve_right/W, curve_left/N,  grass,         grass,         straight/N,    asphalt,       curve_right/W, straight/W,    3way_left/N,   asphalt]
+- [asphalt,       straight/N,    asphalt,       asphalt,       asphalt,       curve_right/W, curve_left/N,  grass,         curve_right/W, straight/W,    straight/W,    curve_left/E,  asphalt,       asphalt,       asphalt,       straight/N,    asphalt]
+- [asphalt,       curve_right/W, curve_left/N,  asphalt,       asphalt,       asphalt,       curve_right/W, curve_left/N,  grass,         grass,         grass,         grass,         asphalt,       asphalt,       asphalt,       straight/N,    asphalt]
+- [asphalt,       asphalt,       curve_right/W, curve_left/N,  asphalt,       asphalt,       asphalt,       curve_right/W, curve_left/N,  grass,         grass,         grass,         asphalt,       asphalt,       asphalt,       straight/N,    asphalt]
+- [asphalt,       asphalt,       asphalt,       curve_right/W, curve_left/N,  asphalt,       asphalt,       asphalt,       straight/N,    grass,         grass,         grass,         asphalt,       asphalt,       asphalt,       straight/N,    asphalt]
+- [asphalt,       asphalt,       asphalt,       asphalt,       curve_right/W, straight/W,    curve_left/N,  asphalt,       3way_left/S,  straight/W,    3way_left/W,  straight/W,    3way_left/W,  straight/W,    straight/W,    3way_left/N,   asphalt]
+- [asphalt,       curve_right/N, straight/W,    curve_left/N,  asphalt,       asphalt,       straight/N,    asphalt,       straight/N,    grass,         straight/N,    grass,         straight/N,    asphalt,       asphalt,       straight/N,    asphalt]
+- [asphalt,       straight/N,    grass,         curve_right/W, straight/W,    straight/W,    4way,          straight/W,    4way,          straight/W,    3way_left/E,  straight/W,    4way,          straight/W,    straight/W,    curve_left/E,  asphalt]
+- [asphalt,       straight/N,    grass,         grass,         grass,         grass,         straight/N,    grass,         straight/N,    grass,         grass,         grass,         straight/N,    grass,         grass,         grass,         asphalt]
+- [asphalt,       curve_right/W, straight/W,    straight/W,    straight/W,    straight/W,    curve_left/E,  grass,         curve_right/W, straight/W,    straight/W,    straight/W,    curve_left/E,  grass,         grass,         grass,         asphalt]
+- [asphalt,       asphalt,       asphalt,       asphalt,       asphalt,       asphalt,       asphalt,       asphalt,       asphalt,       asphalt,       asphalt,       asphalt,       asphalt,       asphalt,       asphalt,       asphalt,       asphalt]
+
+
+objects:
+
+- kind: sign_right_T_intersect
+  pos: [14.05, 2.05]
+  rotate: 180
+  height: 0.18
+
+- kind: sign_stop
+  pos: [12.95, 2.05]
+  rotate: 0
+  height: 0.18
+
+- kind: sign_stop
+  pos: [14.05, 0.95]
+  rotate: 180
+  height: 0.18
+
+- kind: sign_T_intersect
+  pos: [14.15, 0.95]
+  rotate: 270
+  height: 0.18
+
+- kind: sign_left_T_intersect
+  pos: [12.95, 0.95]
+  rotate: 0
+  height: 0.18
+
+- kind: sign_stop
+  pos: [12.85, 0.95]
+  rotate: 270
+  height: 0.18
+
+- kind: sign_right_T_intersect
+  pos: [12.05, 5.05]
+  rotate: 180
+  height: 0.18
+
+- kind: sign_stop
+  pos: [10.95, 5.05]
+  rotate: 0
+  height: 0.18
+
+- kind: sign_stop
+  pos: [12.05, 3.95]
+  rotate: 180
+  height: 0.18
+
+- kind: sign_T_intersect
+  pos: [12.15, 3.95]
+  rotate: 270
+  height: 0.18
+
+- kind: sign_left_T_intersect
+  pos: [10.95, 3.95]
+  rotate: 0
+  height: 0.18
+
+- kind: sign_stop
+  pos: [10.85, 3.95]
+  rotate: 270
+  height: 0.18
+
+- kind: sign_stop
+  pos: [12.95, 3.95]
+  rotate: 270
+  height: 0.18
+
+- kind: sign_right_T_intersect
+  pos: [12.95, 5.05]
+  rotate: 90
+  height: 0.18
+
+- kind: sign_left_T_intersect
+  pos: [14.05, 3.95]
+  rotate: 270
+  height: 0.18
+
+- kind: sign_stop
+  pos: [14.05, 3.85]
+  rotate: 180
+  height: 0.18
+
+- kind: sign_stop
+  pos: [14.05, 5.05]
+  rotate: 90
+  height: 0.18
+
+- kind: sign_T_intersect
+  pos: [14.05, 5.15]
+  rotate: 180
+  height: 0.18
+
+- kind: sign_right_T_intersect
+  pos: [2.05, 4.95]
+  rotate: 270
+  height: 0.18
+
+- kind: sign_stop
+  pos: [2.05, 6.05]
+  rotate: 90
+  height: 0.18
+
+- kind: sign_left_T_intersect
+  pos: [0.95, 6.05]
+  rotate: 90
+  height: 0.18
+
+- kind: sign_stop
+  pos: [0.95, 6.15]
+  rotate: 0
+  height: 0.18
+
+- kind: sign_stop
+  pos: [0.95, 4.95]
+  rotate: 270
+  height: 0.18
+
+- kind: sign_T_intersect
+  pos: [0.95, 4.85]
+  rotate: 0
+  height: 0.18
+
+- kind: sign_right_T_intersect
+  pos: [2.95, 4.95]
+  rotate: 0
+  height: 0.18
+
+- kind: sign_stop
+  pos: [4.05, 4.95]
+  rotate: 180
+  height: 0.18
+
+- kind: sign_stop
+  pos: [2.95, 6.05]
+  rotate: 0
+  height: 0.18
+
+- kind: sign_left_T_intersect
+  pos: [4.05, 6.05]
+  rotate: 180
+  height: 0.18
+
+- kind: sign_left_T_intersect
+  pos: [4.05, 6.05]
+  rotate: 180
+  height: 0.18
+
+- kind: sign_stop
+  pos: [4.15, 6.05]
+  rotate: 90
+  height: 0.18
+
+- kind: sign_right_T_intersect
+  pos: [6.05, 6.05]
+  rotate: 180
+  height: 0.18
+
+- kind: sign_stop
+  pos: [4.95, 6.05]
+  rotate: 0
+  height: 0.18
+
+- kind: sign_stop
+  pos: [6.05, 4.95]
+  rotate: 180
+  height: 0.18
+
+- kind: sign_T_intersect
+  pos: [6.15, 4.95]
+  rotate: 270
+  height: 0.18
+
+- kind: sign_left_T_intersect
+  pos: [4.95, 4.95]
+  rotate: 0
+  height: 0.18
+
+- kind: sign_stop
+  pos: [4.85, 4.95]
+  rotate: 270
+  height: 0.18
+
+- kind: sign_stop
+  pos: [14.95, 5.95]
+  rotate: 270
+  height: 0.18
+
+- kind: sign_right_T_intersect
+  pos: [14.95, 7.05]
+  rotate: 90
+  height: 0.18
+
+- kind: sign_left_T_intersect
+  pos: [16.05, 5.95]
+  rotate: 270
+  height: 0.18
+
+- kind: sign_stop
+  pos: [16.05, 5.85]
+  rotate: 180
+  height: 0.18
+
+- kind: sign_stop
+  pos: [16.05, 7.05]
+  rotate: 90
+  height: 0.18
+
+- kind: sign_T_intersect
+  pos: [16.05, 7.15]
+  rotate: 180
+  height: 0.18
+
+- kind: sign_right_T_intersect
+  pos: [9.05, 10.95]
+  rotate: 270
+  height: 0.18
+
+- kind: sign_stop
+  pos: [9.05, 12.05]
+  rotate: 90
+  height: 0.18
+
+- kind: sign_left_T_intersect
+  pos: [7.95, 12.05]
+  rotate: 90
+  height: 0.18
+
+- kind: sign_stop
+  pos: [7.95, 12.15]
+  rotate: 0
+  height: 0.18
+
+- kind: sign_stop
+  pos: [7.95, 10.95]
+  rotate: 270
+  height: 0.18
+
+- kind: sign_T_intersect
+  pos: [7.95, 10.85]
+  rotate: 0
+  height: 0.18
+
+- kind: sign_right_T_intersect
+  pos: [11.05, 12.05]
+  rotate: 180
+  height: 0.18
+
+- kind: sign_stop
+  pos: [9.95, 12.05]
+  rotate: 0
+  height: 0.18
+
+- kind: sign_stop
+  pos: [11.05, 10.95]
+  rotate: 180
+  height: 0.18
+
+- kind: sign_T_intersect
+  pos: [11.15, 10.95]
+  rotate: 270
+  height: 0.18
+
+- kind: sign_left_T_intersect
+  pos: [9.95, 10.95]
+  rotate: 0
+  height: 0.18
+
+- kind: sign_stop
+  pos: [9.85, 10.95]
+  rotate: 270
+  height: 0.18
+
+- kind: sign_right_T_intersect
+  pos: [13.05, 12.05]
+  rotate: 180
+  height: 0.18
+
+- kind: sign_stop
+  pos: [11.95, 12.05]
+  rotate: 0
+  height: 0.18
+
+- kind: sign_stop
+  pos: [13.05, 10.95]
+  rotate: 180
+  height: 0.18
+
+- kind: sign_T_intersect
+  pos: [13.15, 10.95]
+  rotate: 270
+  height: 0.18
+
+- kind: sign_left_T_intersect
+  pos: [11.95, 10.95]
+  rotate: 0
+  height: 0.18
+
+- kind: sign_stop
+  pos: [11.85, 10.95]
+  rotate: 270
+  height: 0.18
+
+- kind: sign_stop
+  pos: [14.95, 10.95]
+  rotate: 270
+  height: 0.18
+
+- kind: sign_right_T_intersect
+  pos: [14.95, 12.05]
+  rotate: 90
+  height: 0.18
+
+- kind: sign_left_T_intersect
+  pos: [16.05, 10.95]
+  rotate: 270
+  height: 0.18
+
+- kind: sign_stop
+  pos: [16.05, 10.85]
+  rotate: 180
+  height: 0.18
+
+- kind: sign_stop
+  pos: [16.05, 12.05]
+  rotate: 90
+  height: 0.18
+
+- kind: sign_T_intersect
+  pos: [16.05, 12.15]
+  rotate: 180
+  height: 0.18
+
+- kind: sign_4_way_intersect
+  pos: [5.95, 12.95]
+  rotate: 0
+  height: 0.18
+
+- kind: sign_t_light_ahead
+  pos: [5.85, 12.95]
+  rotate: 270
+  height: 0.18
+
+- kind: sign_4_way_intersect
+  pos: [7.05, 12.95]
+  rotate: 270
+  height: 0.18
+
+- kind: sign_t_light_ahead
+  pos: [7.05, 12.85]
+  rotate: 180
+  height: 0.18
+
+- kind: sign_4_way_intersect
+  pos: [5.95, 14.05]
+  rotate: 90
+  height: 0.18
+
+- kind: sign_t_light_ahead
+  pos: [5.95, 14.15]
+  rotate: 0
+  height: 0.18
+
+- kind: sign_4_way_intersect
+  pos: [7.05, 14.05]
+  rotate: 180
+  height: 0.18
+
+- kind: sign_t_light_ahead
+  pos: [7.15, 14.05]
+  rotate: 90
+  height: 0.18
+
+- kind: sign_4_way_intersect
+  pos: [7.95, 12.95]
+  rotate: 0
+  height: 0.18
+
+- kind: sign_t_light_ahead
+  pos: [7.85, 12.95]
+  rotate: 270
+  height: 0.18
+
+- kind: sign_4_way_intersect
+  pos: [9.05, 12.95]
+  rotate: 270
+  height: 0.18
+
+- kind: sign_t_light_ahead
+  pos: [9.05, 12.85]
+  rotate: 180
+  height: 0.18
+
+- kind: sign_4_way_intersect
+  pos: [7.95, 14.05]
+  rotate: 90
+  height: 0.18
+
+- kind: sign_t_light_ahead
+  pos: [7.95, 14.15]
+  rotate: 0
+  height: 0.18
+
+- kind: sign_4_way_intersect
+  pos: [9.05, 14.05]
+  rotate: 180
+  height: 0.18
+
+- kind: sign_t_light_ahead
+  pos: [9.15, 14.05]
+  rotate: 90
+  height: 0.18
+
+- kind: sign_right_T_intersect
+  pos: [9.95, 12.95]
+  rotate: 0
+  height: 0.18
+
+- kind: sign_stop
+  pos: [11.05, 12.95]
+  rotate: 180
+  height: 0.18
+
+- kind: sign_stop
+  pos: [9.95, 14.05]
+  rotate: 0
+  height: 0.18
+
+- kind: sign_left_T_intersect
+  pos: [11.05, 14.05]
+  rotate: 180
+  height: 0.18
+
+- kind: sign_left_T_intersect
+  pos: [11.05, 14.05]
+  rotate: 180
+  height: 0.18
+
+- kind: sign_stop
+  pos: [11.15, 14.05]
+  rotate: 90
+  height: 0.18
+
+- kind: sign_4_way_intersect
+  pos: [11.95, 12.95]
+  rotate: 0
+  height: 0.18
+
+- kind: sign_t_light_ahead
+  pos: [11.85, 12.95]
+  rotate: 270
+  height: 0.18
+
+- kind: sign_4_way_intersect
+  pos: [13.05, 12.95]
+  rotate: 270
+  height: 0.18
+
+- kind: sign_t_light_ahead
+  pos: [13.05, 12.85]
+  rotate: 180
+  height: 0.18
+
+- kind: sign_4_way_intersect
+  pos: [11.95, 14.05]
+  rotate: 90
+  height: 0.18
+
+- kind: sign_t_light_ahead
+  pos: [11.95, 14.15]
+  rotate: 0
+  height: 0.18
+
+- kind: sign_4_way_intersect
+  pos: [13.05, 14.05]
+  rotate: 180
+  height: 0.18
+
+- kind: sign_t_light_ahead
+  pos: [13.15, 14.05]
+  rotate: 90
+  height: 0.18
+
+- kind: building
+  pos: [9.87, 16.57]
+  rotate: 0
+  height: 0.6
+
+- kind: duckiebot
+  pos: [4.21, 7.35]
+  rotate: 33.97
+  height: 0.1
+
+- kind: bus
+  pos: [1.9, 10.95]
+  rotate: 19.92
+  height: 0.18
+
+- kind: building
+  pos: [3.36, 16.57]
+  rotate: 180
+  height: 0.6
+
+- kind: building
+  pos: [3.96, 6.57]
+  rotate: 0
+  height: 0.6
+
+- kind: barrier
+  pos: [16.97, 11.97]
+  rotate: 102.02
+  height: 0.08
+
+- kind: sign_t_light_ahead
+  pos: [2.24, 0.41]
+  rotate: 194.3
+  height: 0.18
+
+- kind: sign_do_not_enter
+  pos: [16.13, 2.91]
+  rotate: 191.49
+  height: 0.18
+
+- kind: barrier
+  pos: [9.67, 1.6099999999999999]
+  rotate: 262.87
+  height: 0.08
+
+- kind: sign_pedestrian
+  pos: [11.19, 8.98]
+  rotate: 317.85
+  height: 0.18
+
+- kind: sign_t_light_ahead
+  pos: [16.12, 9.14]
+  rotate: 51.38
+  height: 0.18
+
+- kind: tree
+  pos: [15.01, 14.91]
+  rotate: 136.49
+  height: 0.25
+
+- kind: tree
+  pos: [8.99, 5.82]
+  rotate: 273.69
+  height: 0.25
+
+- kind: truck
+  pos: [0.75, 0.65]
+  rotate: 345.11
+  height: 0.2
+
+- kind: house
+  pos: [10.3, 6.32]
+  rotate: 180
+  height: 0.5
+
+- kind: sign_do_not_enter
+  pos: [9.79, 5.43]
+  rotate: 132.47
+  height: 0.18
+
+- kind: duckiebot
+  pos: [5.9, 16.21]
+  rotate: 33.67
+  height: 0.1
+
+- kind: barrier
+  pos: [10.08, 0.18]
+  rotate: 138.98
+  height: 0.08
+
+- kind: tree
+  pos: [11.08, 14.34]
+  rotate: 10.59
+  height: 0.25
+
+- kind: building
+  pos: [16.77, 5.68]
+  rotate: 270
+  height: 0.6
+
+- kind: building
+  pos: [10.34, 9.01]
+  rotate: 270
+  height: 0.6
+
+- kind: cone
+  pos: [6.88, 6.38]
+  rotate: 345.46
+  height: 0.08
+
+- kind: sign_pedestrian
+  pos: [14.56, 2.93]
+  rotate: 169.14
+  height: 0.18
+
+- kind: duckiebot
+  pos: [7.06, 4.48]
+  rotate: 16.07
+  height: 0.1
+
+- kind: sign_pedestrian
+  pos: [16.18, 1.77]
+  rotate: 270.39
+  height: 0.18
+
+- kind: bus
+  pos: [11.9, 16.58]
+  rotate: 145.45
+  height: 0.18
+
+- kind: truck
+  pos: [12.41, 5.87]
+  rotate: 300.24
+  height: 0.2
+
+- kind: sign_t_light_ahead
+  pos: [16.9, 0.83]
+  rotate: 289.59
+  height: 0.18
+
+- kind: cone
+  pos: [16.39, 15.2]
+  rotate: 334.0
+  height: 0.08
+
+- kind: barrier
+  pos: [11.37, 0.6700000000000002]
+  rotate: 297.89
+  height: 0.08
+
+- kind: sign_t_light_ahead
+  pos: [14.36, 4.71]
+  rotate: 90.16
+  height: 0.18
+
+- kind: bus
+  pos: [6.15, 0.07]
+  rotate: 269.3
+  height: 0.18
+
+- kind: sign_yield
+  pos: [2.65, 16.24]
+  rotate: 160.11
+  height: 0.18
+
+- kind: truck
+  pos: [0.36, 9.46]
+  rotate: 350.55
+  height: 0.2
+
+- kind: cone
+  pos: [1.87, 2.32]
+  rotate: 234.33
+  height: 0.08
+
+- kind: sign_yield
+  pos: [11.23, 0.21]
+  rotate: 11.27
+  height: 0.18
+
+- kind: sign_pedestrian
+  pos: [4.35, 12.82]
+  rotate: 310.88
+  height: 0.18
+
+- kind: sign_do_not_enter
+  pos: [16.48, 1.9300000000000002]
+  rotate: 40.21
+  height: 0.18
+
+- kind: truck
+  pos: [1.7200000000000002, 9.91]
+  rotate: 195.4
+  height: 0.2
+
+- kind: cone
+  pos: [6.0, 1.51]
+  rotate: 131.92
+  height: 0.08
+
+- kind: cone
+  pos: [14.79, 8.7]
+  rotate: 1.67
+  height: 0.08
+
+- kind: sign_pedestrian
+  pos: [16.51, 7.91]
+  rotate: 232.04
+  height: 0.18
+
+- kind: sign_pedestrian
+  pos: [15, 9.67]
+  rotate: 90
+  height: 0.18
+
+- kind: sign_pedestrian
+  pos: [16, 9.67]
+  rotate: 270
+  height: 0.18
+
+- kind: sign_pedestrian
+  pos: [15, 7.43]
+  rotate: 90
+  height: 0.18
+
+- kind: sign_pedestrian
+  pos: [16, 7.43]
+  rotate: 270
+  height: 0.18
+
+- kind: sign_yield
+  pos: [9.51, 11]
+  rotate: 0
+  height: 0.18
+
+- kind: sign_yield
+  pos: [9.51, 12]
+  rotate: 180
+  height: 0.18
+
+- kind: sign_t_light_ahead
+  pos: [6, 15]
+  rotate: 0.0
+  height: 0.18
+
+- kind: sign_t_light_ahead
+  pos: [6.0, 16.0]
+  rotate: 180.0
+  height: 0.18
+
+- kind: sign_t_light_ahead
+  pos: [7, 8]
+  rotate: 270.0
+  height: 0.18
+
+- kind: sign_t_light_ahead
+  pos: [6.0, 8.0]
+  rotate: 90.0
+  height: 0.18
+
+- kind: duckie
+  pos: [4.16, 14.76]
+  rotate: 110.66
+  height: 0.3
+
+
+tile_size: 1

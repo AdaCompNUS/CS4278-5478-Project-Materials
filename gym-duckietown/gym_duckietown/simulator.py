@@ -9,6 +9,7 @@ from dataclasses import dataclass
 from typing import Tuple
 import geometry
 import cv2
+import time
 
 
 @dataclass
@@ -162,6 +163,7 @@ class Simulator(gym.Env):
             seed=None,
             distortion=False,
             randomize_maps_on_reset=False,
+            goal_tile=None,
     ):
         """
 
@@ -198,6 +200,7 @@ class Simulator(gym.Env):
         # The parsed content of the map_file
         self.map_data = None
 
+        self.goal = None
         # Maximum number of steps per episode
         self.max_steps = max_steps
 
@@ -245,6 +248,21 @@ class Simulator(gym.Env):
         )
 
         self.reward_range = (-1000, 1000)
+
+        if user_tile_start and ',' in user_tile_start:
+            user_tile_start = user_tile_start.split(',')
+            user_tile_start = (int(user_tile_start[0]), int(user_tile_start[1]))
+        if goal_tile and ',' in goal_tile:
+            goal_tile = goal_tile.split(',')
+            goal_tile = (int(goal_tile[0]), int(goal_tile[1]))
+
+        self.user_tile_start = user_tile_start
+        self.goal_tile = goal_tile
+        self.duckie_pos = []
+        self.goal_tiles = []
+        self.adj_matrix = None
+        self.i = 0
+        self.j = 0
 
         # Window for displaying the environment to humans
         self.window = None
@@ -312,6 +330,7 @@ class Simulator(gym.Env):
 
         self.last_action = np.array([0, 0])
         self.wheelVels = np.array([0, 0])
+        self.get_occupancy_grid(map_data=self.map_data)
 
     def _init_vlists(self):
         import pyglet
@@ -449,8 +468,9 @@ class Simulator(gym.Env):
 
         # If the map specifies a starting tile
         if self.user_tile_start:
-            logger.info('using user tile start: %s' % self.user_tile_start)
+
             i, j = self.user_tile_start
+            logger.info('using user tile start: %s %s' % (i, j))
             tile = self._get_tile(i, j)
             if tile is None:
                 msg = 'The tile specified does not exist.'
@@ -468,7 +488,8 @@ class Simulator(gym.Env):
 
         for _ in range(MAX_SPAWN_ATTEMPTS):
             i, j = tile['coords']
-
+            self.i = i
+            self.j = j
             # Choose a random position on this tile
             x = self.np_random.uniform(i, i + 1) * self.road_tile_size
             z = self.np_random.uniform(j, j + 1) * self.road_tile_size
@@ -513,8 +534,6 @@ class Simulator(gym.Env):
         self.cur_pos = propose_pos
         self.cur_angle = propose_angle
 
-        logger.info('Starting at %s %s' % (self.cur_pos, self.cur_angle))
-
         # Generate the first camera image
         obs = self.render_obs()
 
@@ -530,7 +549,7 @@ class Simulator(gym.Env):
         self.map_name = map_name
 
         # Get the full map file path
-        self.map_file_path = get_file_path('maps', map_name, 'yaml')
+        self.map_file_path = get_file_path('map_2021', map_name, 'yaml')
 
         logger.debug('loading map file "%s"' % self.map_file_path)
 
@@ -538,7 +557,11 @@ class Simulator(gym.Env):
             self.map_data = yaml.load(f, Loader=yaml.Loader)
 
         self._interpret_map(self.map_data)
-        # self.get_occupancy_grid(self.map_data)
+
+    def get_task_info(self):
+        map = self.get_occupancy_grid(self.map_data)
+
+        return map, self.goal_tile, self.user_tile_start
 
     def get_occupancy_grid(self, map_data: dict):
         if not 'tile_size' in map_data:
@@ -556,6 +579,7 @@ class Simulator(gym.Env):
         grid_width = len(tiles[0])
         grid = [None] * grid_width * grid_height
         no_pixels_grid_side = 100
+        self.no_pixels_grid_side = no_pixels_grid_side
 
         img_width = grid_width * no_pixels_grid_side
         img_height = grid_height * no_pixels_grid_side
@@ -586,14 +610,14 @@ class Simulator(gym.Env):
                     i * no_pixels_grid_side:(i + 1) * no_pixels_grid_side] = 1
                     curves = self._get_curve(i, j)
 
-                    color = np.array([[1, 0, 0], [0, 0, 1], [0, 1, 0], [1, 0, 0], [0, 0, 1], [0, 1, 0]])
+                    color = [1, 0, 0]
 
-                    for line_dx, line in enumerate(curves):
+                    for line in curves:
                         pre_p = None
                         for p_idx, point in enumerate(line):
                             x_cor = int(point[0] / road_tile_size * no_pixels_grid_side)
                             y_cor = int(point[2] / road_tile_size * no_pixels_grid_side)
-                            img[y_cor:y_cor + 3, x_cor:x_cor + 3] = color[line_dx]
+                            img[y_cor:y_cor + 3, x_cor:x_cor + 3] = color
                             point = np.array([x_cor, y_cor]).astype(np.float32)
 
                             if pre_p is not None:
@@ -604,18 +628,23 @@ class Simulator(gym.Env):
                                 for k in range(num_nodes):
                                     p_ = pre_p + dir * k
                                     p_ = p_.round().astype(np.int)
-                                    img[p_[1]:p_[1] + 3, p_[0]:p_[0] + 3] = color[line_dx]
+                                    img[p_[1]:p_[1] + 3, p_[0]:p_[0] + 3] = color
 
                             pre_p = point.copy()
 
-        cv2.imshow("img", img)
-        cv2.waitKey(0)
+        # cv2.imshow("img", img)
+        # cv2.waitKey(0)
+        img = cv2.convertScaleAbs(img, alpha=(255.0))
+        # cv2.imwrite(f"./gym_duckietown/map_2021/{self.map_name}.png", img)
+        return img
 
     def _interpret_map(self, map_data: dict):
         if not 'tile_size' in map_data:
-            msg = 'Must now include explicit tile_size in the map data.'
-            raise ValueError(msg)
-        self.road_tile_size = map_data['tile_size']
+            msg = 'Must now include explicit tile_size in the map data. Set default to 1'
+            # raise ValueError(msg)
+            self.road_tile_size = 1
+        else:
+            self.road_tile_size = map_data['tile_size']
         self._init_vlists()
 
         tiles = map_data['tiles']
@@ -741,6 +770,8 @@ class Simulator(gym.Env):
                     obj = TrafficLightObj(obj_desc, self.domain_rand, SAFETY_RAD_MULT)
                 else:
                     obj = WorldObj(obj_desc, self.domain_rand, SAFETY_RAD_MULT)
+                    if obj_desc['kind'] == 'duckie':
+                        self.duckie_pos.append(obj.pos)
             else:
                 if kind == "duckiebot":
                     obj = DuckiebotObj(obj_desc, self.domain_rand, SAFETY_RAD_MULT, WHEEL_DIST,
@@ -787,6 +818,7 @@ class Simulator(gym.Env):
         pass
 
     def seed(self, seed=None):
+        self.seed_num = seed
         self.np_random, _ = seeding.np_random(seed)
         return [seed]
 
@@ -1078,7 +1110,6 @@ class Simulator(gym.Env):
         """
             Get the closest point on the curve to a given point
             Also returns the tangent at that point.
-
             Returns None, None if not in a lane.
         """
 
@@ -1399,14 +1430,6 @@ class Simulator(gym.Env):
                     +40 * col_penalty
             )
 
-        dist_to_stop = 1000.0
-        # print("number of objects = ", len(self.objects))
-        for obj in self.objects:
-            if obj.kind == "sign_stop":
-                dist_to_stop = min(dist_to_stop, ((pos[0] - obj.pos[0]) ** 2 + (pos[2] - obj.pos[2]) ** 2) ** 0.5)
-
-        if self.speed > 0.15 and dist_to_stop < 0.3:
-            reward = -100.0
         return reward
 
     def step(self, action: np.ndarray):
@@ -1427,6 +1450,16 @@ class Simulator(gym.Env):
 
         d = self._compute_done_reward()
         misc['Simulator']['msg'] = d.done_why
+
+        # detect if the goal has reached
+        i, j = self.get_grid_coords(self.cur_pos)
+        if self.goal_tile is not None:
+            if (i, j) == self.goal_tile:
+                d.done = True
+
+        misc['curr_pos'] = (i, j)
+        # if len(self.saved_path) % 25 == 0 or d.done:
+        #     self.get_occupancy_grid(self.map_data)
 
         return obs, d.reward, d.done, misc
 
