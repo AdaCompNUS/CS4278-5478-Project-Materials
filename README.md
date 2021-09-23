@@ -2,7 +2,7 @@
 
 
 ## Evaluation  
-We will evaluate your system on 5 [maps](./maps/) to compute the average accumulated reward. A primary component of your grade is the  reward achieved. In particular, take note below:
+We will evaluate your system on 5 [maps](./gym-duckietown/gym_duckietown/map_2021/) to compute the average accumulated reward. A primary component of your grade is whether the robot finds the goal, and the reward achieved. In particular, take note below:
 
 - Oscillating in place may generate a high score in the simulator, but will be penalized in our evaluation. This is a flaw in the Duckietown simulator.
 
@@ -10,11 +10,13 @@ We will evaluate your system on 5 [maps](./maps/) to compute the average accumul
 Each map is associated with several [random seeds](./seeds.json).  To initialize the gym-duckietown environment, there are three  arguments:
 - `--map-name`: the name of the map
 - `--seed`: random seed of the environment 
+- `--start-tile`: the starting tile. E.g. '1,13'
+- `--goal-tile`: the goal tile. E.g. '3,3'
 - `--max-steps`: the maximum run step. The default value is 1500.  Do not change this default value when you generate the control files for submission.
 
-Generate the control files for submission, similar to what you have done in Assignment 2. A sample file for the python environment is available [here](./example.py) together with [sample control file](./map5_seed11.txt). They illustrate how to add arguments and output your controls to a file. To try our simple policy, 
+Generate the control files for submission, similar to what you have done in Assignment 2. A sample file for the python environment is available [here](./example.py) together with [sample control file](./map4_0_seed2_start_1_13_goal_3_3.txt). They illustrate how to add arguments and output your controls to a file. To try our simple policy, 
 ```
-python example.py --map-name map5 --seed 11
+python example.py --map-name map4_0 --seed 2 --start-tile '1,13' --goal-tile '3,3'
 ```
 
 

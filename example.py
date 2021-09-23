@@ -11,10 +11,10 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--max_steps', type=int, default=1500, help='max_steps')
 
 # You should set them to different map name and seed accordingly
-parser.add_argument('--map_name', '-m', default="map4_0", type=str)
+parser.add_argument('--map-name', '-m', default="map4_0", type=str)
 parser.add_argument('--seed', '-s', default=2, type=int)
-parser.add_argument('--start_tile', '-st', default="1, 13", type=str, help="two numbers separated by a comma")
-parser.add_argument('--goal_tile', '-gt', default="3, 3", type=str, help="two numbers separated by a comma")
+parser.add_argument('--start-tile', '-st', default="1,13", type=str, help="two numbers separated by a comma")
+parser.add_argument('--goal-tile', '-gt', default="3,3", type=str, help="two numbers separated by a comma")
 args = parser.parse_args()
 
 env = DuckietownEnv(
