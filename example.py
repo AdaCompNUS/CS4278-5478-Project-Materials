@@ -42,7 +42,7 @@ cv2.imshow("map", map_img)
 cv2.waitKey(200)
 
 # please remove this line for your own policy
-actions = np.loadtxt('./map4_0_seed2_start_1_13_goal_3_3.txt', delimiter=',')
+actions = np.loadtxt('./map4_0_seed2_start_1,13_goal_3,3.txt', delimiter=',')
 
 for (speed, steering) in actions:
     obs, reward, done, info = env.step([speed, steering])
@@ -53,5 +53,5 @@ for (speed, steering) in actions:
     env.render()
 
 # dump the controls using numpy
-np.savetxt(f'./{args.map_name}_seed{args.seed}_start_{start_pos[0]}_{start_pos[1]}_goal_{goal[0]}_{goal[1]}.txt',
+np.savetxt(f'./{args.map_name}_seed{args.seed}_start_{start_pos[0]},{start_pos[1]}_goal_{goal[0]},{goal[1]}.txt',
            actions, delimiter=',')
