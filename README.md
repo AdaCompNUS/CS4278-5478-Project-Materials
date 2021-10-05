@@ -38,6 +38,7 @@ The robot is only allowed to take in the following information as input:
 - the starting tile
 - the goal tile
 - a map image
+- the [goal images](./goal_images)
 - image observation after each step
 - rough robot position after each step
 
