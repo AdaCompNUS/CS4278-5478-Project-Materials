@@ -1,32 +1,32 @@
 {
-  "map1": {
-    "seeds": [2, 3],
-    "start": [],
-    "goal": []
+  "map1_0": {
+    "seed": [1],
+    "start": [0, 1],
+    "goal": [5, 1]
   },
-  "map2": {
-    "seeds": [1, 2],
-    "start": [],
-    "goal": []
+  "map2_0": {
+    "seed": [1],
+    "start": [7, 7],
+    "goal": [1, 1]
   },
-  "map3": {
-    "seeds": [1, 2],
-    "start": [],
-    "goal": []
+  "map3_0": {
+    "seed": [1],
+    "start": [5, 7],
+    "goal": [2, 2]
   },
   "map4_0": {
-    "seeds": [2],
-    "start": [[1, 13]],
-    "goal": [[3, 3]]
+    "seed": [4],
+    "start": [10, 4],
+    "goal": [3, 3]
   },
   "map4_1": {
-    "seeds": [4],
-    "start": [[7, 7]],
-    "goal": [[1, 12]]
+    "seed": [4],
+    "start": [7, 7],
+    "goal": [1, 12]
   },
   "map5_0": {
-    "seeds": [3],
-    "start": [[13, 3]],
-    "goal": [[2, 9]]
+    "seed": [0],
+    "start": [10, 4],
+    "goal": [2, 9]
   }
 }

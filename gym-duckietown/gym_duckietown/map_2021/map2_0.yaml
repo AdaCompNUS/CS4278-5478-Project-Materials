@@ -1,0 +1,39 @@
+tiles:
+- [floor, floor, floor, floor, floor, floor, floor, floor, floor]
+- [floor, curve_left/W, straight/W , 3way_left/W , straight/W, 3way_left/W , straight/W    , curve_left/N, floor]
+- [floor, straight/S  ,floor       , straight/N  , floor     , straight/N  , floor         , straight/N , floor  ]
+- [floor, 3way_left/S ,straight/W  , 4way        , straight/E, 4way        , straight/W    , 3way_left/N , floor ]
+- [floor, straight/S  ,floor       , straight/S  , floor     , straight/S  , floor         , straight/N , floor  ]
+- [floor, 3way_left/S ,straight/W  , 4way        , straight/E, 4way        , straight/W    , 3way_left/N , floor]
+- [floor, straight/S  ,floor       , straight/N  , floor     , straight/N  , floor         , straight/N , floor  ]
+- [floor, curve_left/S,straight/E  , 3way_left/E , straight/E, 3way_left/E , straight/E    , curve_left/E , floor]
+- [floor, floor, floor, floor, floor, floor, floor, floor, floor]
+
+objects:
+
+- kind: building
+  pos: [0.95, 1.5 ]
+  rotate: 90
+  height: 0.2
+
+- kind: duckie
+  pos: [0.95, 1.5, 0.2]
+  rotate: 0
+  scale: 0.05
+
+- kind: cone
+  pos: [1, 3.5]
+  rotate: 90
+  height: 0.08
+
+- kind: sign_stop
+  pos: [6.08, 6.05]
+  rotate: 180
+  height: 0.18
+
+- kind: sign_stop
+  pos: [6.94, 6.05]
+  rotate: 90
+  height: 0.18
+
+tile_size: 1

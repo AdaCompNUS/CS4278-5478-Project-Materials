@@ -760,9 +760,14 @@ objects:
   rotate: 90.0
   height: 0.18
 
+- kind: building
+  pos: [ 14.9, 9.46 ]
+  rotate: 90
+  height: 0.2
+
 - kind: duckie
-  pos: [14.8, 9.46]
-  rotate: 75.91
-  height: 0.3
+  pos: [14.9, 9.46, 0.2]
+  rotate: 0
+  scale: 0.05
 
 tile_size: 1

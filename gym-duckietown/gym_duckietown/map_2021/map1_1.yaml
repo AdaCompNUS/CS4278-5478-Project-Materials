@@ -1,0 +1,20 @@
+# Linear stretch of road. Basic test case.
+tiles:
+  - [grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass]
+  - [straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E, straight/E]
+  - [grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass, grass]
+
+# Always start driving on the leftmost tile
+# The position and direction of the agent on the tile will be randomized
+objects:
+  - kind: building
+    pos: [ 70, 0.9 ]
+    rotate: -180
+    height: 0.2
+
+  - kind: duckie
+    pos: [ 70, 0.9, 0.2 ]
+    rotate: -90
+    scale: 0.05
+
+tile_size: 1
