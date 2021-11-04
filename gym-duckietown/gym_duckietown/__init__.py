@@ -32,7 +32,7 @@ def reg_map_env(map_file):
 
 
 # Register a gym environment for each map file available
-for map_file in os.listdir(get_subdir_path('maps')):
+for map_file in os.listdir(get_subdir_path('map_2021')):
     if 'regress' not in map_file:
         reg_map_env(map_file)
 
