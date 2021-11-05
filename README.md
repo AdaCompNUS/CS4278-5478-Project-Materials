@@ -6,7 +6,7 @@
 
 ## Running the Simulation
 
-We will evaluate your system on 5 [maps](./gym-duckietown/gym_duckietown/map_2021/) to compute the average accumulated
+We will evaluate your system on 5 [maps](./gym-duckietown/gym_duckietown/map_2021/) together with [start and goal locations](./goal.json) to compute the average accumulated
 reward. A primary component of your grade is how fast the robot finds the goal, and the reward achieved. In particular,
 take note below:
 
