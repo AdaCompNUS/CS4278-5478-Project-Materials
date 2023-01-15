@@ -2,7 +2,23 @@
 
 ## Installation
 
-`pip install -e gym-duckietown`
+You are suggested to use `Anaconda` to create a virtual environment for the project. See [here](https://docs.anaconda.com/anaconda/install/index.html) for the installation guide of `Anaconda` for different OS distributions. 
+
+After installing `Anaconda`, run the following commands 
+```
+# create a clean environment with python 3.8
+conda create --name cs4278 python=3.8 
+conda activate cs4278
+
+# git clone our repo
+git clone https://github.com/AdaCompNUS/CS4278-5478-Project-Materials.git
+cd CS4278-5478-Project-Materials
+pip install -e gym-duckietown
+
+# manually install these specific versions of packages
+pip install pyparsing==2.2.1
+pip install PyGeometry==1.4.5
+```
 
 ## Running the Simulation
 
