@@ -40,4 +40,5 @@ setup(
                 'duckietown-start-gym=gym_duckietown.launcher:main',
             ],
         },
+        py_modues=[]
 )
