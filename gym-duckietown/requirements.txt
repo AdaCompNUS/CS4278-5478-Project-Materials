@@ -7,7 +7,7 @@ cycler==0.10.0
 dataclasses==0.6
 decorator==5.1.0
 duckietown-slimremote==2018.10.1
-future==0.18.2
+future==0.18.3
 gym==0.21.0
 imageio==2.9.0
 iniconfig==1.1.1
