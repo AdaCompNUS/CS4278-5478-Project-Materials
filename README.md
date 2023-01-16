@@ -14,9 +14,12 @@ conda activate duckietown
 git clone https://github.com/AdaCompNUS/CS4278-5478-Project-Materials.git
 cd CS4278-5478-Project-Materials
 pip install -e gym-duckietown
+```
 
-# run example. you should see a window
-python example.py --map-name map4_0 --seed 2 --start-tile 1,13 --goal-tile 3,3
+To test the installation, you may manually control the robot with the following example command:
+```angular2html
+cd gym-duckietown
+python manual_control.py --map-name map1
 ```
 
 ## Running the Simulation
