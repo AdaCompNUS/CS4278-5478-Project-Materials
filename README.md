@@ -7,17 +7,16 @@ You are suggested to use `Anaconda` to create a virtual environment for the proj
 After installing `Anaconda`, run the following commands 
 ```
 # create a clean environment with python 3.8
-conda create --name cs4278 python=3.8 
-conda activate cs4278
+conda create --name duckietown python=3.8 
+conda activate duckietown
 
 # git clone our repo
 git clone https://github.com/AdaCompNUS/CS4278-5478-Project-Materials.git
 cd CS4278-5478-Project-Materials
 pip install -e gym-duckietown
 
-# manually install these specific versions of packages
-pip install pyparsing==2.2.1
-pip install PyGeometry==1.4.5
+# run example. you should see a window
+python example.py --map-name map4_0 --seed 2 --start-tile 1,13 --goal-tile 3,3
 ```
 
 ## Running the Simulation
