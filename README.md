@@ -13,6 +13,8 @@ conda activate duckietown
 # git clone our repo
 git clone https://github.com/AdaCompNUS/CS4278-5478-Project-Materials.git
 cd CS4278-5478-Project-Materials
+
+# install
 pip install -e gym-duckietown
 ```
 
