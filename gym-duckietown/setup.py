@@ -18,27 +18,19 @@ def get_version(filename):
 
 version = get_version(filename='gym_duckietown/__init__.py')
 
+with open('requirements.txt', 'r') as f:
+    required_packages = [s.strip() for s in f.readlines()]
+
 setup(
-        name='gym_duckietown',
-        version=version,
-        keywords='duckietown, environment, agent, rl, openaigym, openai-gym, gym',
-        install_requires=[
-            'gym>=0.9.0',
-            'numpy>=1.10.0',
-            'pyglet',
-            'pyzmq>=16.0.0',
-            'scikit-image>=0.13.1',
-            'opencv-python>=3.4',
-            'pyyaml>=3.11',
-            'cloudpickle',
-            'duckietown_slimremote>=2018.8.2', 
-            'pygeometry',
-            'dataclasses'
+    name='gym_duckietown',
+    version=version,
+    keywords='duckietown, environment, agent, rl, openaigym, openai-gym, gym',
+    packages=["gym_duckietown"],
+    install_requires=required_packages,
+    entry_points={
+        'console_scripts': [
+            'duckietown-start-gym=gym_duckietown.launcher:main',
         ],
-        entry_points={
-            'console_scripts': [
-                'duckietown-start-gym=gym_duckietown.launcher:main',
-            ],
-        },
-        py_modues=[]
+    },
+    py_modues=[]
 )
