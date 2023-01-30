@@ -73,14 +73,11 @@ class DuckietownEnv(Simulator):
         vels = np.array([u_l_limited, u_r_limited])
 
         obs, reward, done, info = Simulator.step(self, vels)
-        mine = {}
-        mine['k'] = self.k
-        mine['gain'] = self.gain
-        mine['train'] = self.trim
-        mine['radius'] = self.radius
-        mine['omega_r'] = omega_r
-        mine['omega_l'] = omega_l
-        info['DuckietownEnv'] = mine
+
+        more_info = {'k': self.k, 'gain': self.gain, 'train': self.trim, 'radius': self.radius, 'omega_r': omega_r,
+                     'omega_l': omega_l}
+        info['DuckietownEnv'] = more_info
+
         return obs, reward, done, info
 
 
