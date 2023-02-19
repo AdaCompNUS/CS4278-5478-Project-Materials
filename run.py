@@ -77,9 +77,6 @@ if args.manual:
         if key_handler[key.LSHIFT]:
             action *= 3
 
-        import pdb
-        pdb.set_trace()
-
         obs, reward, done, info = env.step(action)
         print(f"current pose = {info['curr_pos']}, step count = {env.unwrapped.step_count}, step reward = {reward:.3f}")
 
