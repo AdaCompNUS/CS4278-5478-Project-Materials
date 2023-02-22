@@ -26,7 +26,7 @@ python manual_control.py --map-name map1
 
 ## Running the Simulation
 
-We will evaluate your system on 5 [maps](./gym-duckietown/gym_duckietown/map_2021/) together with [start and goal locations](./goal.json) to compute the average accumulated
+We will evaluate your system on 5 [maps](./gym-duckietown/gym_duckietown/map_2021/) together with [start and goal locations](testcases/task2.json) to compute the average accumulated
 reward. A primary component of your grade is how fast the robot finds the goal, and the reward achieved. In particular,
 take note below:
 
@@ -43,13 +43,15 @@ To initialize the gym-duckietown environment, there are five arguments:
   control files for submission.
 
 Generate the control files for submission, similar to what you have done in Lab 1. A sample file for the python
-environment is available [here](./example.py) together
+environment is available [here](./run.py) together
 with [sample control file](./map4_0_seed2_start_1,13_goal_3,3.txt). They illustrate how to add arguments and output your
 controls to a file. To try our simple policy,
 
 ```
-python example.py --map-name map4_0 --seed 2 --start-tile 1,13 --goal-tile 3,3
+python run.py --map-name map4_0 --seed 2 --start-tile 1,13 --goal-tile 3,3 --manual False
 ```
+
+If you wish to manually control the agent, use `--manual True`. 
 
 ## System Input
 
@@ -60,6 +62,8 @@ The robot is only allowed to take in the following information as input:
 - a map image
 - the [goal images](./goal_images)
 - image observation after each step
-- rough robot position after each step
+- coarse robot position after each step
 
-More details can be found in [example.py](./example.py).
+## Testing
+
+Test cases for the two submissions are in the `testcases` folder. For an example control file, see `map4_0_seed2_start_1,13_goal_3,3.txt`.
