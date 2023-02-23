@@ -2,9 +2,9 @@
 
 ## Installation
 
-You are suggested to use `Anaconda` to create a virtual environment for the project. See [here](https://docs.anaconda.com/anaconda/install/index.html) for the installation guide of `Anaconda` for different OS distributions. 
+We recommend the use of [Anaconda](https://docs.anaconda.com/anaconda/install/index.html) to create a virtual environment for the project.  
 
-After installing `Anaconda`, run the following commands 
+Run the following commands to install the Dukietown simulator:
 ```
 # create a clean environment with python 3.8
 conda create --name duckietown python=3.8 
@@ -18,7 +18,7 @@ cd CS4278-5478-Project-Materials
 pip install -e gym-duckietown
 ```
 
-To test the installation, you may manually control the robot with the following example command:
+To test the installation, you may manually control the robot:
 ```angular2html
 cd gym-duckietown
 python manual_control.py --map-name map1
