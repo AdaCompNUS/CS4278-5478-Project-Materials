@@ -1,0 +1,16 @@
+(0, 1), forward
+(1, 1), forward
+(2, 1), forward
+(3, 1), forward
+(4, 1), forward
+(5, 1), forward
+(6, 1), forward
+(7, 1), forward
+(8, 1), forward
+(9, 1), forward
+(10, 1), forward
+(11, 1), forward
+(12, 1), forward
+(13, 1), forward
+(14, 1), forward
+(15, 1), forward

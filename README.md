@@ -26,7 +26,7 @@ python manual_control.py --map-name map1
 
 ## Running the Simulation
 
-We will evaluate your system on 5 [maps](./gym-duckietown/gym_duckietown/map_2021/) together with [start and goal locations](testcases/task2.json) to compute the average accumulated
+We will evaluate your system on 5 [maps](./gym-duckietown/gym_duckietown/map_2021/) together with [start and goal locations](testcases/) to compute the average accumulated
 reward. A primary component of your grade is how fast the robot finds the goal, and the reward achieved. In particular,
 take note below:
 

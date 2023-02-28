@@ -1,0 +1,12 @@
+(13, 3), forward
+(13, 2), forward
+(13, 1), forward
+(13, 2), uturn
+(13, 3), forward
+(13, 4), forward
+(12, 4), right
+(11, 4), forward
+(11, 5), left
+(11, 6), forward
+(11, 7), forward
+(10, 7), right

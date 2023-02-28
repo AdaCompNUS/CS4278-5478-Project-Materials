@@ -1,0 +1,10 @@
+(7, 7), forward
+(7, 6), forward
+(7, 5), forward
+(6, 5), left
+(5, 5), forward
+(4, 5), forward
+(3, 5), forward
+(2, 5), forward
+(1, 5), forward
+(1, 4), right
