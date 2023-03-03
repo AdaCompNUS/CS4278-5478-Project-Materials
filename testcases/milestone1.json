@@ -25,7 +25,7 @@
 
   "map5_0": {"seed": [1], "start": [10, 4], "goal": [2, 9]},
   "map5_1": {"seed": [0], "start": [4, 13], "goal": [6, 8]},
-  "map5_2": {"seed": [0], "start": [13, 3], "goal": [10, 7]},
+  "map5_2": {"seed": [10], "start": [13, 3], "goal": [10, 7]},
   "map5_3": {"seed": [0], "start": [12, 15], "goal": [1, 6]},
-  "map5_4": {"seed": [5], "start": [15, 9], "goal": [3, 10]}
+  "map5_4": {"seed": [1], "start": [3, 3], "goal": [3, 10]}
 }
