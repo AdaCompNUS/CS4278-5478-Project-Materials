@@ -1,6 +1,4 @@
 (13, 3), forward
-(13, 2), forward
-(13, 3), forward
 (13, 4), forward
 (12, 4), right
 (11, 4), forward
