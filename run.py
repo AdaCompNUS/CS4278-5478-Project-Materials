@@ -8,6 +8,19 @@ import sys
 import cv2
 
 
+def str2bool(v):
+    """
+    Reads boolean value from a string
+    """
+    if isinstance(v, bool):
+        return v
+    if v.lower() in ('yes', 'true', 't', 'y', '1'):
+        return True
+    elif v.lower() in ('no', 'false', 'f', 'n', '0'):
+        return False
+    else:
+        raise argparse.ArgumentTypeError('Boolean value expected.')
+
 # declare the arguments
 parser = argparse.ArgumentParser()
 
@@ -21,7 +34,7 @@ parser.add_argument('--start-tile', '-st', default="1,13", type=str, help="two n
 parser.add_argument('--goal-tile', '-gt', default="3,3", type=str, help="two numbers separated by a comma")
 parser.add_argument('--control_path', default='./map4_0_seed2_start_1,13_goal_3,3.txt', type=str,
                     help="the control file to run")
-parser.add_argument('--manual', default=False, type=bool, help="whether to manually control the robot")
+parser.add_argument('--manual', default=False, type=str2bool, help="whether to manually control the robot")
 args = parser.parse_args()
 
 
