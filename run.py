@@ -49,7 +49,7 @@ env = DuckietownEnv(
     randomize_maps_on_reset=False
 )
 
-obs = env.reset()
+# obs = env.reset() # WARNING: never call this function during testing
 env.render()
 
 map_img, goal, start_pos = env.get_task_info()
