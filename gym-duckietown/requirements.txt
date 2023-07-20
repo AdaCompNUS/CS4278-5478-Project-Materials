@@ -32,7 +32,7 @@ py==1.10.0
 PyContracts==1.8.12
 PyGeometry==1.5.6
 pyglet==1.5.21
-Pygments==2.10.0
+Pygments==2.15.0
 pyparsing==2.4.7
 pytest==6.2.5
 python-dateutil==2.8.2
